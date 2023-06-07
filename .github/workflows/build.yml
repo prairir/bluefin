@@ -1,7 +1,7 @@
 name: Build and Push Image
 on:
   schedule:
-    - cron: '00 10 * * *'  # 10:00am everyday
+    - cron: '0 10 * * 1,4'  # 10:00am every monday and thursday. rational being 2 times a week about equally distant from eachother
   pull_request:
     paths-ignore:
       - '**.md'
