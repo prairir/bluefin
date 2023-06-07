@@ -4,20 +4,19 @@
             "all": [
                 "gnome-shell-extension-appindicator",
                 "gnome-shell-extension-dash-to-dock",
-                "gnome-shell-extension-blur-my-shell",
+                "gnome-shell-extension-pop-shell",
                 "gnome-shell-extension-gsconnect",
                 "input-remapper",
                 "libgda",
                 "libgda-sqlite",
                 "libratbag-ratbagd",
-		"nautilus-gsconnect",    
+                "nautilus-gsconnect",    
                 "python3-pip",
                 "tailscale",
-		"tmux",
+                "tmux",
                 "wireguard-tools",
                 "xprop",
-                "yaru-theme",
-		"zsh"
+                "zsh"
             ]
         },
         "exclude": {
