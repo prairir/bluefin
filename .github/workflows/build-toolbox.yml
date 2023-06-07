@@ -1,7 +1,7 @@
 name: Build and Push Toolbox Image
 on:
   schedule:
-    - cron: '20 22 * * *'  # 10:20pm everyday
+    - cron: '20 22 * * 1,4'  # 10:20pm every monday and thursday. rational being 2 times a week about equally distant from eachother
   pull_request:
     paths-ignore:
       - '**.md'
