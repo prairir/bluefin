@@ -1,57 +1,51 @@
-# bluefin
-Fedora Silverblue for Ubuntu Expatriates
+# Ryans bluefin
+Customized base container for Fedora Silverblue
 
-**This image is considered Beta** 
+**THIS FORKS TARGET AUDIENCE IS ME**
 
-[![release-please](https://github.com/ublue-os/bluefin/actions/workflows/release-please.yml/badge.svg)](https://github.com/ublue-os/bluefin/actions/workflows/release-please.yml)
+This is only doable because the contributors to bluefin.
+Seriously, this is amazing and amazingly done.
 
-A familiar(ish) Ubuntu desktop for Fedora Silverblue. It strives to cover these three use cases:
-- For end users it provides a system as reliable as a Chromebook with near-zero maintainance, with the power of Ubuntu and Fedora fused together
-- For developers we endeavour to provide the best cloud-native developer experience by enabling easy consumption of the [industry's leading tools](https://landscape.cncf.io/card-mode?sort=stars). These are included in dedicated `bluefin-dx` and `bluefin-dx-nvidia` images
-- For gamers we strive to deliver a world-class Flathub gaming experience
-
-![image](https://user-images.githubusercontent.com/1264109/224488462-ac4ed2ad-402d-4116-bd08-15f61acce5cf.png)
-
-> "Let's see what's out there." - Jean-Luc Picard
+[![release-please](https://github.com/prairir/bluefin/actions/workflows/release-please.yml/badge.svg)](https://github.com/prairir/bluefin/actions/workflows/release-please.yml)
 
 # Usage
 
-1. Download and install [the ISO from here](https://ublue.it/installation/):
-   - Select "Install ublue-os/bluefin" from the menu 
-     - Choose "Install bluefin:38" if you have an AMD or Intel GPU
-     - Choose "Install bluefin-nvidia:38" if you have an Nvidia GPU
-   - [Follow the rest of the installation instructions](https://ublue.it/installation/)
+1. download and install fedora silverblue
 
-### For existing Silverblue/Kinoite users
+1. install a container
 
-1. After you reboot you should [pin the working deployment](https://docs.fedoraproject.org/en-US/fedora-silverblue/faq/#_about_using_silverblue) so you can safely rollback. 
 1. [AMD/Intel GPU users only] Open a terminal and rebase the OS to this image:
 
     Bluefin:
-
-        sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/ublue-os/bluefin:38
+    ```
+    sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/prairir/bluefin:38
+    ```
 
     Bluefin DX:
-
-        sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/ublue-os/bluefin-dx:38
+    ```
+    sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/prairir/bluefin-dx:38
+    ```
 
 
 1. [Nvidia GPU users only] Open a terminal and rebase the OS to this image:
 
     Bluefin:
-
-        sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/ublue-os/bluefin-nvidia:38
+    ```
+    sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/prairir/bluefin-nvidia:38
+    ```
         
     Bluefin DX:
+    ```
+    sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/prairir/bluefin-dx-nvidia:38      
+    ```
 
-        sudo rpm-ostree rebase ostree-unverified-registry:ghcr.io/ublue-os/bluefin-dx-nvidia:38      
-        
 1. Reboot the system and you're done!
 
 1. To revert back:
+    ```
+    sudo rpm-ostree rebase fedora:fedora/38/x86_64/silverblue
+    ```
 
-        sudo rpm-ostree rebase fedora:fedora/38/x86_64/silverblue
-        
 Check the [Silverblue documentation](https://docs.fedoraproject.org/en-US/fedora-silverblue/) for instructions on how to use rpm-ostree. 
 We build date tags as well, so if you want to rebase to a particular day's release you can use the version number and date to boot off of that specific image:
   
@@ -65,14 +59,14 @@ The `latest` tag will automatically point to the latest build.
 
 System updates are image-based and automatic. Applications are logically seperated from the system by using Flatpaks, and the CLI experience is contained within OCI containers: 
 
-## For Users
+## For Ryan
 
 - Ubuntu-like GNOME layout
   - Includes the following GNOME Extensions
     - Dash to Dock - for a more Unity-like dock
     - Appindicator - for tray-like icons in the top right corner
     - GSConnect - Integrate your mobile device with your desktop
-    - Blur my Shell - for dat bling
+    - POP! Shell - for tiling
 - GNOME Software with [Flathub](https://flathub.org)
     - Use a familiar software center UI to install graphical software
 - Built on top of the the [uBlue main image](https://github.com/ublue-os/main) 
@@ -83,7 +77,7 @@ System updates are image-based and automatic. Applications are logically seperat
     - Don't overthink it, just shut your computer off when you're not using it
 
 
-## For Developers
+## For Also Ryan
     
 - Built-in Ubuntu user space 
     - `Ctrl`-`Alt`-`u` - will launch an Ubuntu image inside a terminal via [Distrobox](https://github.com/89luca89/distrobox), your home directory will be transparently mounted
@@ -164,7 +158,7 @@ These images are signed with sigstore's [cosign](https://docs.sigstore.dev/cosig
 
 1. Clone this repository and cd into the working directory
 
-       git clone https://github.com/ublue-os/bluefin.git
+       git clone https://github.com/prairir/bluefin.git
        cd bluefin
 
 1. Make modifications if desired
@@ -178,30 +172,3 @@ These images are signed with sigstore's [cosign](https://docs.sigstore.dev/cosig
 
        sudo rpm-ostree rebase ostree-unverified-registry:whatever/bluefin:latest
    
-## Frequently Asked Questions
-
-> What about codecs?
-
-Everything you need is included. You will need to [configure Firefox for hardware acceleration](https://ublue.it/codecs/)
-
-> How do I get my GNOME back to normal Fedora defaults?
-
-We set the default dconf keys in `/etc/dconf/db/local`, removing those keys and updating the database will take you back to the fedora default: 
-
-    sudo rm -f /etc/dconf/db/local.d/01-ublue
-    sudo dconf update
-    
-If you prefer a vanilla GNOME installation check out [silverblue-main](https://github.com/ublue-os/main) or [silverblue-nvidia](https://github.com/ublue-os/nvidia) for a more upstream experience.
-
-Should I trust you?
-
-> This is all hosted, built, and pushed on GitHub. As far as if I'm a trustable fellow, here's my [bio](https://www.ypsidanger.com/about/). If you've made it this far then hopefully you've come to the conclusion on how easy it would be to build all of this on your own trusted machinery. :smile:
-
-## [![Repography logo](https://images.repography.com/logo.svg)](https://repography.com) / Recent activity [![Time period](https://images.repography.com/35181738/ublue-os/bluefin/recent-activity/FQtB4TpTHzW4xXgqpImZRpCa_73e9torMuxJiEGHGyI/dQfbRYx1KQiBimZnq3kUtRc3TOPc1aWB9etI3c1KNLs_badge.svg)](https://repography.com)
-[![Timeline graph](https://images.repography.com/35181738/ublue-os/bluefin/recent-activity/FQtB4TpTHzW4xXgqpImZRpCa_73e9torMuxJiEGHGyI/dQfbRYx1KQiBimZnq3kUtRc3TOPc1aWB9etI3c1KNLs_timeline.svg)](https://github.com/ublue-os/bluefin/commits)
-[![Issue status graph](https://images.repography.com/35181738/ublue-os/bluefin/recent-activity/FQtB4TpTHzW4xXgqpImZRpCa_73e9torMuxJiEGHGyI/dQfbRYx1KQiBimZnq3kUtRc3TOPc1aWB9etI3c1KNLs_issues.svg)](https://github.com/ublue-os/bluefin/issues)
-[![Pull request status graph](https://images.repography.com/35181738/ublue-os/bluefin/recent-activity/FQtB4TpTHzW4xXgqpImZRpCa_73e9torMuxJiEGHGyI/dQfbRYx1KQiBimZnq3kUtRc3TOPc1aWB9etI3c1KNLs_prs.svg)](https://github.com/ublue-os/bluefin/pulls)
-[![Activity map](https://images.repography.com/35181738/ublue-os/bluefin/recent-activity/FQtB4TpTHzW4xXgqpImZRpCa_73e9torMuxJiEGHGyI/dQfbRYx1KQiBimZnq3kUtRc3TOPc1aWB9etI3c1KNLs_map.svg)](https://github.com/ublue-os/bluefin/commits)
-
-## [![Repography logo](https://images.repography.com/logo.svg)](https://repography.com) / Top contributors
-[![Top contributors](https://images.repography.com/35181738/ublue-os/bluefin/top-contributors/FQtB4TpTHzW4xXgqpImZRpCa_73e9torMuxJiEGHGyI/dQfbRYx1KQiBimZnq3kUtRc3TOPc1aWB9etI3c1KNLs_table.svg)](https://github.com/ublue-os/bluefin/graphs/contributors)
