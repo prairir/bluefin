@@ -1,18 +1,23 @@
-FROM quay.io/toolbx-images/ubuntu-toolbox:22.04
-# From https://github.com/toolbx-images/images/tree/main/ubuntu/22.04
+FROM quay.io/toolbx-images/archlinux-toolbox:latest
 
 LABEL com.github.containers.toolbox="true" \
       usage="This image is meant to be used with the toolbox or distrobox command" \
       summary="A cloud-native terminal experience" \
-      maintainer="jorge.castro@gmail.com"
+      maintainer="me@ryanprairie.com"
+
+RUN pacman -Syu --noconfirm
 
 COPY toolbox-packages /toolbox-packages
 
-RUN apt-get update && \ 
-    apt-get upgrade -y && \
-    DEBIAN_FRONTEND=noninteractive apt-get -y install \
-        $(cat toolbox-packages | xargs) && \
-    rm -rd /var/lib/apt/lists/*
+RUN pacman -S --needed base-devel && \ 
+    git clone https://aur.archlinux.org/paru.git && \
+    cd paru && \
+    cd yay && \
+    makepkg -sri --needed --noconfirm && \
+    cd && \
+    rm -rf .cache paru
+
+RUN cat toolbox-packages | xargs paru -S --noconfirm --removemake
 
 RUN rm /toolbox-packages
 
