@@ -62,7 +62,6 @@ COPY workarounds.sh /tmp/workarounds.sh
 RUN wget https://copr.fedorainfracloud.org/coprs/ganto/lxc4/repo/fedora-"${FEDORA_MAJOR_VERSION}"/ganto-lxc4-fedora-"${FEDORA_MAJOR_VERSION}".repo -O /etc/yum.repos.d/ganto-lxc4-fedora-"${FEDORA_MAJOR_VERSION}".repo
 RUN wget https://terra.fyralabs.com/terra.repo -O /etc/yum.repos.d/terra.repo
 
-RUN rpm-ostree install code
 RUN rpm-ostree install lxd lxc
 RUN rpm-ostree install iotop dbus-x11 podman-compose podman-docker podman-plugins podman-tui
 RUN rpm-ostree install adobe-source-code-pro-fonts cascadiacode-nerd-fonts google-droid-sans-mono-fonts google-go-mono-fonts ibm-plex-mono-fonts jetbrains-mono-fonts-all mozilla-fira-mono-fonts powerline-fonts ubuntumono-nerd-fonts
@@ -80,8 +79,6 @@ RUN /tmp/workarounds.sh
 # Clean up repos, everything is on the image so we don't need them
 RUN rm -f /etc/yum.repos.d/terra.repo
 RUN rm -f /etc/yum.repos.d/ganto-lxc4-fedora-"${FEDORA_MAJOR_VERSION}".repo
-RUN rm -f /etc/yum.repos.d/vscode.repo
-RUN rm -f /etc/yum.repos.d/_copr:copr.fedorainfracloud.org:phracek:PyCharm.repo
 RUN rm -f /etc/yum.repos.d/fedora-cisco-openh264.repo
 
 RUN rm -rf /tmp/* /var/*
