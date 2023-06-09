@@ -2,8 +2,8 @@
 <!DOCTYPE wallpapers SYSTEM "gnome-wp-list.dtd">
 <wallpapers>
     <wallpaper>
-        <name>uBlue Lagoon</name>
-        <filename>/usr/share/backgrounds/lagoon.jpg</filename>
+        <name>Ryan's night wallpaper</name>
+        <filename>/usr/share/backgrounds/night_wallpaper.jpg</filename>
         <options>zoom</options>
         <shade_type>solid</shade_type>
         <pcolor>#000000</pcolor>
