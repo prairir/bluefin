@@ -12,7 +12,6 @@ COPY toolbox-packages /toolbox-packages
 RUN pacman -S --needed base-devel && \ 
     git clone https://aur.archlinux.org/paru.git && \
     cd paru && \
-    cd yay && \
     makepkg -sri --needed --noconfirm && \
     cd && \
     rm -rf .cache paru
