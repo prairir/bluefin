@@ -5,7 +5,7 @@ LABEL com.github.containers.toolbox="true" \
       summary="A cloud-native terminal experience" \
       maintainer="me@ryanprairie.com"
 
-RUN pacman -Syu --noconfirm
+RUN pacman -Syu --noconfirm && pacman -S --needed base-devel
 
 COPY toolbox-packages /toolbox-packages
 
@@ -17,8 +17,7 @@ RUN useradd --system $user && \
 
 USER $user
 
-RUN pacman -S --needed base-devel && \ 
-    git clone https://aur.archlinux.org/paru.git && \
+RUN git clone https://aur.archlinux.org/paru.git && \
     cd paru && \
     makepkg -sri --needed --noconfirm && \
     cd && \
