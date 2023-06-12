@@ -10,7 +10,7 @@ RUN pacman -Syu --noconfirm
 COPY toolbox-packages /toolbox-packages
 
 # fix paru complainging bout root
-ARG user-makepkg
+ARG user=makepkg
 
 USER $user
 
