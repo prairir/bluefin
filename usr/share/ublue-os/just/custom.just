@@ -1,6 +1,6 @@
 distrobox-bluefin:
-  echo 'Creating Blufin Ubuntu distrobox ...'
-  distrobox create --image ghcr.io/ublue-os/ubuntu-toolbox:latest -n bluefin -Y
+  echo 'Creating Ryans arch distrobox ...'
+  distrobox create --image ghcr.io/prairir/arch-toolbox:latest -n bluefin -Y
 
 distrobox-universal:
   echo 'Creating Universal Development distrobox ...'
