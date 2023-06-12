@@ -34,6 +34,7 @@ screens:
           description: Core Applications
           default: true
           packages:
+          - 1Password: https://downloads.1password.com/linux/flatpak/1Password.flatpakref
           - Backup: org.gnome.DejaDup
           - Blackbox Terminal: com.raggesilver.BlackBox
           - Calculator: org.gnome.Calculator
@@ -50,6 +51,7 @@ screens:
           - Maps: org.gnome.Maps
           - Nautilus Preview: org.gnome.NautilusPreviewer
           - Syncthing: com.github.zocker_160.SyncThingy
+          - Spotify: com.spotify.Client
           - Text Editor: org.gnome.TextEditor
           - Weather: org.gnome.Weather
           - Disk Usage Analyzer: org.gnome.baobab
