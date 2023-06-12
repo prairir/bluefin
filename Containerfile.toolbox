@@ -12,6 +12,9 @@ COPY toolbox-packages /toolbox-packages
 # fix paru complainging bout root
 ARG user=makepkg
 
+RUN useradd --system $user && \
+  echo "$user ALL=(ALL:ALL) NOPASSWD:ALL" > /etc/sudoers.d/$user
+
 USER $user
 
 RUN pacman -S --needed base-devel && \ 
