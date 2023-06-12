@@ -9,6 +9,11 @@ RUN pacman -Syu --noconfirm
 
 COPY toolbox-packages /toolbox-packages
 
+# fix paru complainging bout root
+ARG user-makepkg
+
+USER $user
+
 RUN pacman -S --needed base-devel && \ 
     git clone https://aur.archlinux.org/paru.git && \
     cd paru && \
@@ -17,6 +22,8 @@ RUN pacman -S --needed base-devel && \
     rm -rf .cache paru
 
 RUN cat toolbox-packages | xargs paru -S --noconfirm --removemake
+
+USER root
 
 RUN rm /toolbox-packages
 
