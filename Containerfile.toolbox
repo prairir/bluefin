@@ -16,6 +16,7 @@ RUN useradd --system $user && \
   echo "$user ALL=(ALL:ALL) NOPASSWD:ALL" > /etc/sudoers.d/$user
 
 USER $user
+WORKDIR /tmp
 
 RUN git clone https://aur.archlinux.org/paru.git && \
     cd paru && \
