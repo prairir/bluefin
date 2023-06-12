@@ -12,11 +12,11 @@ COPY toolbox-packages /toolbox-packages
 # fix paru complainging bout root
 ARG user=makepkg
 
-RUN useradd --system $user && \
+RUN useradd --system --create-home $user && \
   echo "$user ALL=(ALL:ALL) NOPASSWD:ALL" > /etc/sudoers.d/$user
 
 USER $user
-WORKDIR /tmp
+WORKDIR /home/$user
 
 RUN git clone https://aur.archlinux.org/paru.git && \
     cd paru && \
