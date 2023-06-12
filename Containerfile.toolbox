@@ -24,7 +24,7 @@ RUN git clone https://aur.archlinux.org/paru.git && \
     cd && \
     rm -rf .cache paru
 
-RUN cat toolbox-packages | xargs paru -S --noconfirm --removemake
+RUN cat /toolbox-packages | xargs paru -S --noconfirm --removemake
 
 USER root
 
