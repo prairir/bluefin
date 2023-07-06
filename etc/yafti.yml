@@ -5,14 +5,24 @@ screens:
   first-screen:
     source: yafti.screen.title
     values:
-      title: "Welcome to Bluefin (Alpha)"
+      title: "Welcome to Bluefin (Ryan)"
       icon: "/path/to/icon"
       description: |
-        Pick some applications to get started
+        Hi Ryan, mess up or new install?
+  can-we-install-chezmoi:
+    source yafti.screen.consent:
+    values: 
+      title: Install Chezmoi?
+      condition:
+        run: flatpak remotes --system | grep fedora
+      description: |
+        WARNING: This will install chezmoi and Ryans dot files! If you do not want to do this exit the installer.
+      actions:
+        - run: sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply prairir/dot_files.git
   can-we-modify-your-flatpaks:
     source: yafti.screen.consent
     values:
-      title: Welcome, Traveler
+      title: Welcome, Ryan
       condition:
         run: flatpak remotes --system | grep fedora
       description: |
