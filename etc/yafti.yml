@@ -10,7 +10,7 @@ screens:
       description: |
         Hi Ryan, mess up or new install?
   can-we-install-chezmoi:
-    source yafti.screen.consent:
+    source: yafti.screen.consent
     values: 
       title: Install Chezmoi?
       condition:
