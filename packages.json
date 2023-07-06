@@ -12,11 +12,10 @@
                 "libratbag-ratbagd",
                 "nautilus-gsconnect",    
                 "python3-pip",
-                "tailscale",
                 "tmux",
-                "wireguard-tools",
                 "xprop",
-                "zsh"
+                "zsh",
+                "alacritty"
             ]
         },
         "exclude": {
@@ -27,24 +26,14 @@
             ]
         }
     },
-    "37": {
-        "include": {
-            "all": [
-	        "podman-docker"
-	    ]
-        },
-        "exclude": {
-            "all": []
-        }
-    },
     "38": {
         "include": {
-            "all": []
-        },
-        "exclude": {
             "all": [
 	        "podman-docker"
-	    ]
+            ]
+        },
+        "exclude": {
+            "all": []
         }
     }
 }
