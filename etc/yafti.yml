@@ -13,8 +13,6 @@ screens:
     source: yafti.screen.consent
     values: 
       title: Install Chezmoi?
-      condition:
-        run: flatpak remotes --system | grep fedora
       description: |
         WARNING: This will install chezmoi and Ryans dot files! If you do not want to do this exit the installer.
       actions:
