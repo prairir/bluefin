@@ -42,7 +42,6 @@ screens:
           description: Core Applications
           default: true
           packages:
-          - 1Password: https://downloads.1password.com/linux/flatpak/1Password.flatpakref
           - Backup: org.gnome.DejaDup
           - Calculator: org.gnome.Calculator
           - Calendar: org.gnome.Calendar
