@@ -28,7 +28,7 @@ RUN /tmp/build.sh && \
     systemctl enable dconf-update.service && \
     systemctl enable rpm-ostree-countme.service && \
     fc-cache -f /usr/share/fonts/ubuntu && \
-    rm -f /etc/yum.repos.d/tailscale.repo && \
+    rm -f /etc/yum.repos.d/1password.repo && \
     sed -i 's/#DefaultTimeoutStopSec.*/DefaultTimeoutStopSec=15s/' /etc/systemd/user.conf && \
     sed -i 's/#DefaultTimeoutStopSec.*/DefaultTimeoutStopSec=15s/' /etc/systemd/system.conf && \
     rm -rf /tmp/* /var/* && \
