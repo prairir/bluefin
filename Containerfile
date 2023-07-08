@@ -22,6 +22,7 @@ COPY --from=docker.io/bketelsen/vanilla-os:v0.0.12 /usr/share/gnome-background-p
 ADD packages.json /tmp/packages.json
 ADD build.sh /tmp/build.sh
 
+RUN rpm-ostree install 1password
 RUN /tmp/build.sh
 RUN pip install --prefix=/usr yafti
 RUN systemctl unmask dconf-update.service
