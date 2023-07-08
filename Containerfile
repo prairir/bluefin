@@ -22,18 +22,18 @@ COPY --from=docker.io/bketelsen/vanilla-os:v0.0.12 /usr/share/gnome-background-p
 ADD packages.json /tmp/packages.json
 ADD build.sh /tmp/build.sh
 
-RUN /tmp/build.sh && \
-    pip install --prefix=/usr yafti && \
-    systemctl unmask dconf-update.service && \
-    systemctl enable dconf-update.service && \
-    systemctl enable rpm-ostree-countme.service && \
-    fc-cache -f /usr/share/fonts/ubuntu && \
-    sed -i 's/#DefaultTimeoutStopSec.*/DefaultTimeoutStopSec=15s/' /etc/systemd/user.conf && \
-    sed -i 's/#DefaultTimeoutStopSec.*/DefaultTimeoutStopSec=15s/' /etc/systemd/system.conf && \
-    rm -rf /tmp/* /var/* && \
-    ostree container commit && \
-    mkdir -p /var/tmp && \
-    chmod -R 1777 /var/tmp
+RUN /tmp/build.sh
+RUN pip install --prefix=/usr yafti
+RUN systemctl unmask dconf-update.service
+RUN systemctl enable dconf-update.service
+RUN systemctl enable rpm-ostree-countme.service
+RUN fc-cache -f /usr/share/fonts/ubuntu
+RUN sed -i 's/#DefaultTimeoutStopSec.*/DefaultTimeoutStopSec=15s/' /etc/systemd/user.conf
+RUN sed -i 's/#DefaultTimeoutStopSec.*/DefaultTimeoutStopSec=15s/' /etc/systemd/system.conf
+RUN rm -rf /tmp/* /var/*
+RUN ostree container commit
+RUN mkdir -p /var/tmp
+RUN chmod -R 1777 /var/tmp
 
 # K8s tools
 
