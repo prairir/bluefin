@@ -25,7 +25,7 @@ ADD build.sh /tmp/build.sh
 RUN /tmp/build.sh
 
 COPY scripts /scripts
-RUN /scripts/1password.sh
+#RUN /scripts/1password.sh
 
 RUN pip install --prefix=/usr yafti
 
