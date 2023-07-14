@@ -1,6 +1,5 @@
 #!/usr/bin/env sh
-
-# stollen from https://github.com/btkostner/silverblue/blob/main/scripts/1password.sh
+# stolen from https://github.com/btkostner/silverblue/blob/main/scripts/1password.sh
 
 set -e
 
