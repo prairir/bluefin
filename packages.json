@@ -14,6 +14,7 @@
                 "python3-pip",
                 "tmux",
                 "xprop",
+                "neovim",
                 "zsh",
                 "alacritty",
                 "https://downloads.1password.com/linux/rpm/stable/x86_64/1password-latest.rpm",
