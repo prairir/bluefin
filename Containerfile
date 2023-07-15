@@ -24,9 +24,6 @@ ADD build.sh /tmp/build.sh
 
 RUN /tmp/build.sh
 
-COPY scripts /scripts
-#RUN /scripts/1password.sh
-
 RUN pip install --prefix=/usr yafti
 
 RUN systemctl unmask dconf-update.service
@@ -39,7 +36,7 @@ RUN sed -i 's/#DefaultTimeoutStopSec.*/DefaultTimeoutStopSec=15s/' /etc/systemd/
 RUN sed -i 's/#DefaultTimeoutStopSec.*/DefaultTimeoutStopSec=15s/' /etc/systemd/system.conf
 
 # clean up
-RUN rm -rf /tmp/* /var/* /scripts/
+RUN rm -rf /tmp/* /var/* 
 RUN ostree container commit
 RUN mkdir -p /var/tmp
 RUN chmod -R 1777 /var/tmp
