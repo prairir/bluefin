@@ -24,6 +24,9 @@ ADD build.sh /tmp/build.sh
 
 RUN /tmp/build.sh
 
+# install oh-my-zsh
+RUN sh -c "$(curl https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" "" --unattended
+
 RUN pip install --prefix=/usr yafti
 
 RUN systemctl unmask dconf-update.service
