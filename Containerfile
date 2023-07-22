@@ -25,7 +25,7 @@ ADD build.sh /tmp/build.sh
 RUN /tmp/build.sh
 
 # install 1password desktop and cli
-RUN rpm-ostree https://downloads.1password.com/linux/rpm/stable/x86_64/1password-latest.rpm https://downloads.1password.com/linux/rpm/stable/x86_64/1password-cli-latest.x86_64.rpm
+RUN rpm-ostree install https://downloads.1password.com/linux/rpm/stable/x86_64/1password-latest.rpm https://downloads.1password.com/linux/rpm/stable/x86_64/1password-cli-latest.x86_64.rpm
 
 RUN pip install --prefix=/usr yafti
 
