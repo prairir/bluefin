@@ -27,6 +27,9 @@ RUN /tmp/build.sh
 # install oh-my-zsh
 RUN sh -c "$(curl https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)" "" --unattended
 
+# install 1password desktop and cli
+RUN rpm-ostree https://downloads.1password.com/linux/rpm/stable/x86_64/1password-latest.rpm https://downloads.1password.com/linux/rpm/stable/x86_64/1password-cli-latest.x86_64.rpm
+
 RUN pip install --prefix=/usr yafti
 
 RUN systemctl unmask dconf-update.service
