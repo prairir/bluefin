@@ -9,6 +9,14 @@ screens:
       icon: "/path/to/icon"
       description: |
         Hi Ryan, mess up or new install?
+  can-we-install-oh-my-zsh:
+    source: yafti.screen.consent
+    values: 
+      title: Install oh-my-zsh?
+      description: |
+        WARNING: This will install oh-my-zsh! If you do not want to do this exit the installer.
+      actions:
+        - run: git clone https://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
   can-we-install-chezmoi:
     source: yafti.screen.consent
     values: 
