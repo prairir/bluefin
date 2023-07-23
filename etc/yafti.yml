@@ -13,6 +13,7 @@ screens:
     source: yafti.screen.consent
     values: 
       title: Install oh-my-zsh?
+      show_terminal: true
       description: |
         WARNING: This will install oh-my-zsh! If you do not want to do this exit the installer.
       actions:
@@ -21,14 +22,25 @@ screens:
     source: yafti.screen.consent
     values: 
       title: Install Chezmoi?
+      show_terminal: true
       description: |
         WARNING: This will install chezmoi and Ryans dot files! If you do not want to do this exit the installer.
       actions:
         - run: sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply prairir/dot_files.git
+  can-we-install-1password:
+    source: yafti.screen.consent
+    values: 
+      title: Install 1Password desktop and cli?
+      show_terminal: true
+      description: |
+        WARNING: This will install 1Password! If you do not want to do this exit the installer.
+      actions:
+        - run: rpm-ostree install https://downloads.1password.com/linux/rpm/stable/x86_64/1password-latest.rpm https://downloads.1password.com/linux/rpm/stable/x86_64/1password-cli-latest.x86_64.rpm
   can-we-modify-your-flatpaks:
     source: yafti.screen.consent
     values:
       title: Welcome, Ryan
+      show_terminal: true
       condition:
         run: flatpak remotes --system | grep fedora
       description: |
@@ -112,14 +124,6 @@ screens:
           - Gstreamer for OBS: com.obsproject.Studio.Plugin.Gstreamer
           - Gstreamer VAAPI for OBS: com.obsproject.Studio.Plugin.GStreamerVaapi
           - Boatswain for Streamdeck: com.feaneron.Boatswain
-  can-we-install-1password:
-    source: yafti.screen.consent
-    values: 
-      title: Install 1Password desktop and cli?
-      description: |
-        WARNING: This will install 1Password! If you do not want to do this exit the installer.
-      actions:
-        - run: rpm-ostree install https://downloads.1password.com/linux/rpm/stable/x86_64/1password-latest.rpm https://downloads.1password.com/linux/rpm/stable/x86_64/1password-cli-latest.x86_64.rpm
   final-screen:
     source: yafti.screen.title
     values:
