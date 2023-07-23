@@ -9,38 +9,33 @@ screens:
       icon: "/path/to/icon"
       description: |
         Hi Ryan, mess up or new install?
-  can-we-install-oh-my-zsh:
-    source: yafti.screen.consent
-    values: 
-      title: Install oh-my-zsh?
+  command-drop-down:
+    source: yafti.screen.package
+    values:
+      title: Commands to run
       show_terminal: true
-      description: |
-        WARNING: This will install oh-my-zsh! If you do not want to do this exit the installer.
-      actions:
-        - run: git clone https://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
-  can-we-install-chezmoi:
-    source: yafti.screen.consent
-    values: 
-      title: Install Chezmoi?
-      show_terminal: true
-      description: |
-        WARNING: This will install chezmoi and Ryans dot files! If you do not want to do this exit the installer.
-      actions:
-        - run: sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply prairir/dot_files.git
-  can-we-install-1password:
-    source: yafti.screen.consent
-    values: 
-      title: Install 1Password desktop and cli?
-      show_terminal: true
-      description: |
-        WARNING: This will install 1Password! If you do not want to do this exit the installer.
-      actions:
-        - run: rpm-ostree install https://downloads.1password.com/linux/rpm/stable/x86_64/1password-latest.rpm https://downloads.1password.com/linux/rpm/stable/x86_64/1password-cli-latest.x86_64.rpm
+      package_manager: yafti.plugin.run
+      groups:
+        chezmoi:
+          description: Install chezmoi and Ryans dot files?
+          default: true
+          commands:
+          - Install: sh -c "$(curl -fsLS get.chezmoi.io)" -- init --apply prairir/dot_files.git
+        oh-my-zsh:
+          description: Install oh-my-zsh?
+          default: true
+          commands:
+          - Install: git clone https://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
+        1password:
+          description: Install 1Password desktop and cli?
+          default: true
+          commands:
+          - Desktop: rpm-ostree install https://downloads.1password.com/linux/rpm/stable/x86_64/1password-latest.rpm
+          - Cli: rpm-ostree install https://downloads.1password.com/linux/rpm/stable/x86_64/1password-cli-latest.x86_64.rpm
   can-we-modify-your-flatpaks:
     source: yafti.screen.consent
     values:
       title: Welcome, Ryan
-      show_terminal: true
       condition:
         run: flatpak remotes --system | grep fedora
       description: |
@@ -51,7 +46,7 @@ screens:
         - run: flatpak remote-delete fedora --force
         - run: flatpak remove --system --noninteractive --all
         - run: flatpak remote-add --if-not-exists --user flathub https://flathub.org/repo/flathub.flatpakrepo
-  applications:
+  flatpak-applications:
     source: yafti.screen.package
     values:
       title: Application Installation
