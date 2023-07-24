@@ -38,6 +38,18 @@ screens:
           packages:
           - Desktop: |
               wget --content-disposition -nv -P /tmp/rpms https://mullvad.net/download/app/rpm/latest; rpm-ostree install /tmp/rpms/MullvadVPN-*.rpm; rm /tmp/rpms/MullvadVPN-*.rpm
+        asdf:
+          description: Install asdf, go, nodejs, and zig? 
+          default: true
+          packages:
+          - Install: |
+              git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.12.0;
+              asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git;
+              asdf install nodejs latest
+              asdf plugin add golang https://github.com/asdf-community/asdf-golang.git;
+              asdf install golang latest
+              asdf plugin-add zig https://github.com/asdf-community/asdf-zig.git;
+              asdf zig install master
   can-we-modify-your-flatpaks:
     source: yafti.screen.consent
     values:
