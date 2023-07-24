@@ -27,11 +27,17 @@ screens:
           packages:
           - Install: git clone https://github.com/robbyrussell/oh-my-zsh.git $HOME/.oh-my-zsh
         1password:
-          description: Install 1Password desktop and cli?
+          description: Install 1Password desktop and cli? Restart after installing
           default: true
           packages:
           - Desktop: rpm-ostree install https://downloads.1password.com/linux/rpm/stable/x86_64/1password-latest.rpm
           - Cli: rpm-ostree install https://downloads.1password.com/linux/rpm/stable/x86_64/1password-cli-latest.x86_64.rpm
+        Mullvad:
+          description: Install Mullvad? Restart after installing. Dont forget to run `sudo systemctl enable --now mullvad-daemon` after install
+          default: true
+          packages:
+          - Desktop: |
+              wget --content-disposition -nv -P /tmp/rpms https://mullvad.net/download/app/rpm/latest; rpm-ostree install /tmp/rpms/MullvadVPN-*.rpm; rm /tmp/rpms/MullvadVPN-*.rpm
   can-we-modify-your-flatpaks:
     source: yafti.screen.consent
     values:
