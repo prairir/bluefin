@@ -5,13 +5,11 @@ labels: [bug]
 body:
   - type: markdown
     attributes:
-      value: |
-        Thank you for taking the time to fill out this request!
+      value: Thank you for taking the time to fill out this request!
   - type: textarea
     id: describe-bug
     attributes:
       label: Describe the issue
       placeholder: Tell us what happened
-      value: ""
     validations:
       required: true
