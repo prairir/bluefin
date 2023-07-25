@@ -44,16 +44,19 @@ screens:
           packages:
           - Install: |
               git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.12.0;
-              asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git;
-              asdf install nodejs latest
-              asdf plugin add golang https://github.com/asdf-community/asdf-golang.git;
-              asdf install golang latest
-              asdf plugin-add zig https://github.com/asdf-community/asdf-zig.git;
-              asdf zig install master
+              ~/.asdf/bin/asdf plugin add nodejs https://github.com/asdf-vm/asdf-nodejs.git;
+              ~/.asdf/bin/asdf install nodejs latest;
+              ~/.asdf/bin/asdf global nodejs latest;
+              ~/.asdf/bin/asdf plugin add golang https://github.com/asdf-community/asdf-golang.git;
+              ~/.asdf/bin/asdf install golang latest;
+              ~/.asdf/bin/asdf global golang latest;
+              ~/.asdf/bin/asdf plugin-add zig https://github.com/cheetah/asdf-zig.git;
+              ~/.asdf/bin/asdf install zig master;
+              ~/.asdf/bin/asdf global zig master;
   can-we-modify-your-flatpaks:
     source: yafti.screen.consent
     values:
-      title: Welcome, Ryan
+      title: Ryan
       condition:
         run: flatpak remotes --system | grep fedora
       description: |
