@@ -30,6 +30,10 @@ USER root
 
 RUN rm /toolbox-packages
 
+# workaround for 1Password. git is configured to use that to sign
+# commits, this is workaround to use it
+RUN ln -fs /usr/bin/distrobox-host-exec /opt/1Password/op-ssh-sign
+
 RUN   ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/docker && \
       ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/flatpak && \ 
       ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/podman && \
