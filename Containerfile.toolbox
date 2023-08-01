@@ -34,7 +34,8 @@ RUN rm /toolbox-packages
 # commits, this is workaround to use it
 RUN mkdir /opt/1Password/ && \
     echo "#!/bin/bash" >> /opt/1Password/op-ssh-sign && \
-    echo "/usr/bin/distrobox-host-exec /opt/1Password/op-ssh-sign \"$@\"" >> /opt/1Password/op-ssh-sign
+    echo "/usr/bin/distrobox-host-exec /opt/1Password/op-ssh-sign \"\$@\"" >> /opt/1Password/op-ssh-sign && \
+    chmod 755 /opt/1Password/op-ssh-sign
 
 RUN   ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/docker && \
       ln -fs /usr/bin/distrobox-host-exec /usr/local/bin/flatpak && \ 
