@@ -7,4 +7,5 @@ zsh
 oh-my-zsh-git
 cmake
 starship-git
+emacs-gcc-wayland-devel-bin
 
