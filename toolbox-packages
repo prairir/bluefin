@@ -8,4 +8,8 @@ oh-my-zsh-git
 cmake
 starship-git
 emacs-gcc-wayland-devel-bin
-
+ripgrep
+fd
+zoxide
+jq
+httpie
