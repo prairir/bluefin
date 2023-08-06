@@ -13,3 +13,4 @@ fd
 zoxide
 jq
 httpie
+shellcheck
