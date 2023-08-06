@@ -41,6 +41,18 @@ Seriously, this is amazing and amazingly done.
 
 1. Reboot the system and you're done!
 
+1. Build the distrobox container
+    ```
+    distrobox assemble create --replace --file /etc/distrobox/distrobox.ini
+    ```
+
+1. To install doom emacs in the container
+    ```
+    $HOME/.config/emacs/bin/doom install
+    ```
+
+1. If you want doom emacs, you have to install manually
+
 1. To revert back:
     ```
     sudo rpm-ostree rebase fedora:fedora/38/x86_64/silverblue
